@@ -55,7 +55,13 @@ void EnsureGameVersionCompatibility() {
 }
 
 void WarnBadGameVersion() {
-    NotifyWarning("Game version ("+TmGameVersion+") not marked as compatible with this version of the plugin -- will be inactive!\n\nChecking new versions is a manual process and avoids crashing your game after an update.");
+    NotifyWarning(
+        "This plugin has not been verified to work properly with this game version (" + TmGameVersion + "), "
+        "therefore it's currently disabled.\n\nThere's nothing you need to do - checking new game updates is a "
+        "manual process done by the developer that avoids crashing your game.\n\nTo use the plugin anyway, "
+        "check the last tab of its settings.",
+        15000
+    );
 }
 
 bool requestStarted = true;
