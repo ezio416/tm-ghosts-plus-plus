@@ -60,7 +60,7 @@ void WarnBadGameVersion() {
         "therefore it's currently disabled.\n\nThere's nothing you need to do - checking new game updates is a "
         "manual process done by the developer that avoids crashing your game.\n\nTo use the plugin anyway, "
         "check the last tab of its settings.",
-        15000
+        20000
     );
 }
 
