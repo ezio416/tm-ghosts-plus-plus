@@ -110,12 +110,17 @@ void OverrideGameSafetyCheck_Settings() {
     UI::Text("Game version safe? " + tostring(GameVersionSafe));
     UI::Text("Check request started: " + tostring(requestStarted));
     UI::Text("Check request ended: " + tostring(requestEnded));
-    if (!GameVersionSafe && UI::Button("Disable safety features and run anyway")) {
-        OverrideGameSafetyCheck_GhostsPP();
-    }
-    if (!GameVersionSafe && UI::Button("Disable safety features and run and remember game version")) {
-        OverrideGameSafetyCheck_GhostsPP();
-        S_SavedOkayGameVersion = TmGameVersion;
+    if (!GameVersionSafe) {
+        if (UI::Button("Disable safety features and run anyway")) {
+            OverrideGameSafetyCheck_GhostsPP();
+        }
+        UI::SetItemTooltip("Temporary. Lasts until you restart the game.");
+
+        if (UI::Button("Disable safety features and run and remember game version")) {
+            OverrideGameSafetyCheck_GhostsPP();
+            S_SavedOkayGameVersion = TmGameVersion;
+        }
+        UI::SetItemTooltip("Permanent. Lasts until the game is updated.");
     }
 
     if (GameVersionSafe && S_SavedOkayGameVersion == TmGameVersion) {
